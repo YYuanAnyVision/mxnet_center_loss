@@ -28,15 +28,15 @@ for visualization, you may have to install **seaborn** and **matplotlib**
 
 * with cpu
 
-  > python train.py —batch-size=128
+  > python train.py --batch-size=128
 
 * with gpu
 
-  > python train.py —gpus=0
+  > python train.py --gpus=0
 
   or multi device( not a good idea for MNIST example here )
 
-  > python train.py —gpus=0,1—batch-size=256
+  > python train.py --gpus=0,1 --batch-size=256
 
 ### 3 visualize the result
 

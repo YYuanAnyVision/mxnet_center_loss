@@ -2,8 +2,10 @@
 """ data iterator for mnist """
 import sys
 import os
+
 # code to automatically download dataset
-sys.path.append(os.path.join("/Users/yuanyang/Build/mxnet/tests/python/common"))
+mxnet_root = ''
+sys.path.append(os.path.join( mxnet_root, '/tests/python/common'))
 import get_data
 import mxnet as mx
 
@@ -21,7 +23,6 @@ class custom_mnist_iter(mx.io.DataIter):
     @property
     def provide_label(self):
         provide_label = self.data_iter.provide_label[0]
-        # Different labels should be used here for actual application
         return [('softmax_label', provide_label[1]), \
                 ('center_label', provide_label[1])]
 

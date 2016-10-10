@@ -3,3 +3,4 @@ result
 data
 *.pyc
 log.txt
+.idea

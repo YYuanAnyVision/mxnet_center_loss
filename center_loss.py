@@ -4,15 +4,16 @@ import os
 os.environ['MXNET_CPU_WORKER_NTHREADS'] = '2'
 import mxnet as mx
 
+
 # define metric of accuracy
-class accuracy(mx.metric.EvalMetric):
+class Accuracy(mx.metric.EvalMetric):
     def __init__(self, num=None):
-        super(accuracy, self).__init__('accuracy', num)
+        super(Accuracy, self).__init__('accuracy', num)
 
     def update(self, labels, preds):
         mx.metric.check_label_shapes(labels, preds)
 
-        if self.num != None:
+        if self.num is not None:
             assert len(labels) == self.num
 
         pred_label = mx.nd.argmax_channel(preds[0]).asnumpy().astype('int32')
@@ -25,9 +26,9 @@ class accuracy(mx.metric.EvalMetric):
 
 
 # define some metric of center_loss
-class center_loss_metric(mx.metric.EvalMetric):
+class CenterLoss(mx.metric.EvalMetric):
     def __init__(self):
-        super(center_loss_metric, self).__init__('center_loss')
+        super(CenterLoss, self).__init__('center_loss')
 
     def update(self, labels, preds):
         self.sum_metric = + preds[1].asnumpy()[0]
@@ -47,7 +48,6 @@ class CenterLoss(mx.operator.CustomOp):
         self.scale = scale
 
     def forward(self, is_train, req, in_data, out_data, aux):
-        # can not access ndarray using (i,j)
         labels = in_data[1].asnumpy()
         diff = aux[0]
         center = aux[1]
@@ -100,7 +100,7 @@ class CenterLossProp(mx.operator.CustomOpProp):
         return ['output']
 
     def list_auxiliary_states(self):
-        # call them jsut bias for zero initialization
+        # call them 'bias' for zero initialization
         return ['diff_bias', 'center_bias', 'sum_bias']
 
     def infer_shape(self, in_shape):

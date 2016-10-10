@@ -1,0 +1,5 @@
+result
+.DS_Store
+data
+*.pyc
+log.txt

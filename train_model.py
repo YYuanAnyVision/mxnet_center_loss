@@ -141,8 +141,8 @@ def fit(args, network, data_loader, data_shape, batch_end_callback=None, pattern
 
     # custom metric
     eval_metrics = mx.metric.CompositeEvalMetric()
-    eval_metrics.add(Accuracy)
-    eval_metrics.add(CenterLoss())
+    eval_metrics.add(Accuracy())
+    eval_metrics.add(CenterLossMetric())
     
     model.fit(
         X                  = train,

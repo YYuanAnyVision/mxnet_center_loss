@@ -3,4 +3,6 @@ result
 data
 *.pyc
 log.txt
+*.json
+*.params
 .idea

@@ -26,9 +26,9 @@ class Accuracy(mx.metric.EvalMetric):
 
 
 # define some metric of center_loss
-class CenterLoss(mx.metric.EvalMetric):
+class CenterLossMetric(mx.metric.EvalMetric):
     def __init__(self):
-        super(CenterLoss, self).__init__('center_loss')
+        super(CenterLossMetric, self).__init__('center_loss')
 
     def update(self, labels, preds):
         self.sum_metric = + preds[1].asnumpy()[0]

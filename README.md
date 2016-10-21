@@ -2,6 +2,8 @@
 
 This is a simple implementation of the *center loss* introduced by this [paper](http://ydwen.github.io/papers/WenECCV16.pdf) : *《A Discriminative Feature Learning Approach for Deep Face Recognition》*,*Yandong Wen, Kaipeng Zhang, Zhifeng Li, and Yu Qiao, Shenzhen* check their [site](http://ydwen.github.io/) 
 
+[中文](https://pangyupo.github.io/2016/10/16/mxnet-center-loss/)
+
 ## Prerequisities
 
 install mxnet

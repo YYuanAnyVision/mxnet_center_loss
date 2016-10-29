@@ -71,7 +71,7 @@ def get_symbol(batchsize=64):
 
 
     ce_loss = mx.symbol.SoftmaxOutput(data=fc2, label=softmax_label, name='softmax')
-    center_loss_ = mx.symbol.Custom(data=fc2, label=center_label, name='center_loss_', op_type='centerloss',\
+    center_loss_ = mx.symbol.Custom(data=embedding, label=center_label, name='center_loss_', op_type='centerloss',\
             num_class=10, alpha=0.5, scale=0.01, batchsize=batchsize)
     center_loss = mx.symbol.MakeLoss(name='center_loss', data=center_loss_)
     mlp = mx.symbol.Group([ce_loss, center_loss])

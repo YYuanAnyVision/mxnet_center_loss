@@ -10,7 +10,7 @@ install mxnet
 
 for visualization, you may have to install **seaborn** and **matplotlib**
 
-> sudo pip install seaboard matplotlib
+> sudo pip install seaborn matplotlib
 
 ## code 
 
@@ -24,7 +24,7 @@ for visualization, you may have to install **seaborn** and **matplotlib**
 
 ### 1 set path of mxnet
 
-  change *mxnet_root* to your mxnet root folder in **data.py**
+  change **mxnet_root** to your mxnet root folder in **data.py**
 
 ### 2 train
 
@@ -39,6 +39,10 @@ for visualization, you may have to install **seaborn** and **matplotlib**
   or multi device( not a good idea for MNIST example here )
 
   > python train.py --gpus=0,1 --batch-size=256
+  
+then you can see the output by typing
+
+`tail -f log.txt`
 
 ### 3 visualize the result
 

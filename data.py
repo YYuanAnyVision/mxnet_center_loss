@@ -4,7 +4,7 @@ import sys
 import os
 
 # code to automatically download dataset
-mxnet_root = ''
+mxnet_root = '/home/slu/build/mxnet'
 sys.path.append(os.path.join( mxnet_root, 'tests/python/common'))
 import get_data
 import mxnet as mx

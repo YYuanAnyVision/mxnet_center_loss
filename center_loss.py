@@ -65,7 +65,7 @@ class CenterLoss(mx.operator.CustomOp):
         sum_ = aux[2]
 
         # back grad is just scale * ( x_i - c_yi)
-        grad_scale = float(self.scale)
+        grad_scale = float(self.scale/self.batch_size)
         self.assign(in_grad[0], req[0], diff * grad_scale)
 
         # update the center

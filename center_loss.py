@@ -31,8 +31,8 @@ class CenterLossMetric(mx.metric.EvalMetric):
         super(CenterLossMetric, self).__init__('center_loss')
 
     def update(self, labels, preds):
-        self.sum_metric = + preds[1].asnumpy()[0]
-        self.num_inst = 1
+        self.sum_metric += preds[1].asnumpy()[0]
+        self.num_inst += 1
 
 
 # see details:
@@ -41,7 +41,7 @@ class CenterLoss(mx.operator.CustomOp):
     def __init__(self, ctx, shapes, dtypes, num_class, alpha, scale=1.0):
         if not len(shapes[0]) == 2:
             raise ValueError('dim for input_data shoudl be 2 for CenterLoss')
-        
+
         self.alpha = alpha
         self.batch_size = shapes[0][0]
         self.num_class = num_class
@@ -51,7 +51,7 @@ class CenterLoss(mx.operator.CustomOp):
         labels = in_data[1].asnumpy()
         diff = aux[0]
         center = aux[1]
-        
+
         # store x_i - c_yi
         for i in range(self.batch_size):
             diff[i] = in_data[0][i] - center[int(labels[i])]
